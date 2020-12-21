@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+ <h1>Welcome to Rock Paper Scissors</h1>
+ <h2>Please check the console</h2>
+
+ <script>
+//To Do
+//1) Player input rock,paper or scissor + case insensitve Done
+//2) Computer generate answer rock, paper or scissor Done
+//3) Determine who wins (if statements to test who has what)
+//4) Display who wins
+//5) Keep track of who wins
+playerScore = 0
+computerScore = 0
+
+
+
+function userInput() {
+userChoice = prompt("Do you choose Rock Paper Or Scissors?");
+userChoice = userChoice.toLowerCase();
+userChoice = userChoice.charAt(0).toUpperCase() + userChoice.slice(1);
+return userChoice
+}
+
+function computerInput() {
+computerChoice = Math.floor(Math.random()*3+1) //Generates a random number between 1 and 3
+if (computerChoice === 1) {
+   return computerChoice = "Rock";
+}
+else if (computerChoice === 2) {
+  return computerChoice = "Scissors";
+}
+else if (computerChoice === 3) {
+  return computerChoice = "Paper"
+}
+else{
+  return (console.log("Oh no there's been an error try again"))}
+}
+
+function printScores(){
+  console.log(`You: ${playerScore} Computer: ${computerScore}`);
+}
+
+function resultCalculation(userChoice,computerChoice){
+  console.log(`Player chose ${userChoice}`)
+  console.log(`Computer chose ${computerChoice}`)
+  if (userChoice == computerChoice) {
+    console.log("It's a tie");
+    printScores();
+  }
+  else if (userChoice === "Scissors" && computerChoice === "Paper"){
+    console.log("You win");
+    playerScore = playerScore + 1;
+    printScores()
+  }
+  else if (userChoice === "Rock" && computerChoice === "Scissors"){
+    console.log("You win");
+    playerScore = playerScore + 1;
+    printScores()
+  }
+  else if (userChoice === "Paper" && computerChoice === "Rock"){
+    console.log("You win");
+    playerScore = playerScore + 1;
+    printScores()
+  }
+  else{
+    console.log("Computer Wins")
+    computerScore = computerScore + 1;
+    printScores()
+  }
+}
+
+
+while (playerScore < 5 && computerScore < 5){
+  resultCalculation(userInput(),computerInput());
+}
+if (playerScore > computerScore) {
+  console.log("Well Done You Won the Match, Refresh to play again")
+}
+else{
+  console.log("Oh no You lost the Match, Refresh to play again")}
+
+ </script>
+</body>
+</html>
